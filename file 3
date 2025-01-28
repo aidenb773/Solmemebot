@@ -1,0 +1,17 @@
+import { Connection, Keypair, PublicKey } from '@solana/web3.js';
+import TelegramBot from 'node-telegram-bot-api';
+
+// Load environment variables
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+const SOLANA_WALLET = process.env.SOLANA_WALLET;
+const wallet = Keypair.fromSecretKey(new Uint8Array(JSON.parse(SOLANA_WALLET)));
+
+// Initialize Telegram bot
+const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
+
+// Simple buy/sell logic (customize this later)
+bot.onText(/\/start/, (msg) => {
+  bot.sendMessage(msg.chat.id, 'Bot is running!');
+});
+
+// Add more logic here for trading...
